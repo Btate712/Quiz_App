@@ -10,12 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_14_011728) do
+ActiveRecord::Schema.define(version: 2019_09_14_013034) do
+
+  create_table "encounters", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "user_id"
+    t.integer "selected_option"
+    t.integer "correct_option"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "objectives", force: :cascade do |t|
     t.integer "author_id"
     t.integer "topic_id"
     t.text "objective_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.integer "author_id"
+    t.text "stem"
+    t.string "choice_1"
+    t.string "choice_2"
+    t.string "choice_3"
+    t.string "choice_4"
+    t.integer "correct_choice"
+    t.integer "objective_id"
+    t.boolean "trouble_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
